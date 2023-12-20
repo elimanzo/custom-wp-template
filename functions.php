@@ -1,12 +1,16 @@
 <?php
 
+
+function getVersion() {
+  return wp_get_theme()->get('Version');
+}
+
 function eliRegisterStyles() {
-  $version = wp_get_theme()->get('Version');
   wp_enqueue_style(
     'eli-style', 
     get_template_directory_uri() . "/style.css", 
     array('eli-bootstrap'), 
-    $version, 
+    getVersion(), 
     'all'
   );
   wp_enqueue_style(
@@ -26,5 +30,39 @@ function eliRegisterStyles() {
 }
 
 add_action('wp_enqueue_scripts', 'eliRegisterStyles');
+
+
+function eliRegisterScripts() {
+  wp_enqueue_script(
+    'eli-jquery',
+    'https://code.jquery.com/jquery-3.4.1.slim.min.js',
+    array(),
+    '3.4.1',
+    true
+  );
+  wp_enqueue_script(
+    'eli-popper',
+    'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js',
+    array(),
+    '1.16.0',
+    true
+  );
+  wp_enqueue_script(
+    'eli-bootstrap',
+    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js',
+    array(),
+    '3.4.1',
+    true
+  );
+  wp_enqueue_script(
+    'eli-main',
+    get_template_directory_uri() . "/assets/js/main.js",
+    array(),
+    getVersion(),
+    true
+  );
+}
+
+add_action('wp_enqueue_scripts', 'eliRegisterScripts');
 
 ?>
