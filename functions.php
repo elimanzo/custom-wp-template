@@ -8,6 +8,17 @@ function eliThemeSupport() {
 
 add_action('after_setup_theme', 'eliThemeSupport');
 
+function eliMenus() {
+  $locations = [
+    'primary' => "Desktop Primary Left Sidebar",
+    'footer' => "Footer Menu Items",
+  ];
+
+  register_nav_menus($locations);
+}
+
+add_action('init', 'eliMenus');
+
 function getVersion() {
   return wp_get_theme()->get('Version');
 }
