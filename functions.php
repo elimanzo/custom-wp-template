@@ -1,6 +1,13 @@
 <?php
 
 
+function eliThemeSupport() {
+  // Adds Dynamic title
+  add_theme_support('title-tag');
+}
+
+add_action('after_setup_theme', 'eliThemeSupport');
+
 function getVersion() {
   return wp_get_theme()->get('Version');
 }
