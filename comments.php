@@ -27,9 +27,6 @@
 							);
 						?>
 
-							
-							
-
 						</div><!-- .comments-inner -->
 
 					</div><!-- comments -->
